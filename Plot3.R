@@ -10,11 +10,13 @@ dataset<-tbl_df(rawdata)
 dataset<-filter(dataset,Date=="2007-02-01"|Date=="2007-02-02")
 #Find the timestamp of each observation (Date & Time Combination)
 dataset$Timestamp<-as.POSIXct(paste(dataset$Date,dataset$Time),format="%Y-%m-%d %H:%M:%S")
+#Plot 3 PNG format
+png("Plot5.png",height=480,width=480)
 #Plot 3 core code
-plot3<-plot(dataset$Timestamp,dataset$Sub_metering_1,type="l",ylab="Energy sub metering",cex.lab=0.8,xlab="")
+plot3<-plot(dataset$Timestamp,dataset$Sub_metering_1,type="l",ylab="Energy sub metering",xlab="")
 plot3<-lines(dataset$Timestamp,dataset$Sub_metering_2,type="l",col="red")
 plot3<-lines(dataset$Timestamp,dataset$Sub_metering_3,type="l",col="blue")
-legend("topright",c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),lty=c(1,1),col=c("black","red","blue"),cex=0.6)
-#Plot 3 transfer to PNG format
-dev.copy(png,"Plot3.png")
+legend("topright",c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),lty=c(1,1),col=c("black","red","blue"))
+
 dev.off()
+

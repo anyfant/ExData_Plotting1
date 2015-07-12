@@ -8,8 +8,9 @@ rawdata<-read.csv("household_power_consumption.txt",sep=";",na.strings="?",strin
 rawdata$Date<-as.Date(rawdata$Date,"%d/%m/%Y")
 dataset<-tbl_df(rawdata)
 dataset<-filter(dataset,Date=="2007-02-01"|Date=="2007-02-02")
+#Plot 1 PNG format
+png("Plot1.png",height=480,width=480)
 #Plot 1 core code
-plot1<-hist(dataset$Global_active_power,xlab="Global Active Power (kilowatts)",main="Global Active Power",ylab="Frequency",col="red",cex.lab=0.8)
-#Plot 1 transfer to PNG format
-dev.copy(png,"Plot1.png")
+plot1<-hist(dataset$Global_active_power,xlab="Global Active Power (kilowatts)",main="Global Active Power",ylab="Frequency",col="red")
+
 dev.off()

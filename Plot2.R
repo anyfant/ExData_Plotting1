@@ -10,8 +10,9 @@ dataset<-tbl_df(rawdata)
 dataset<-filter(dataset,Date=="2007-02-01"|Date=="2007-02-02")
 #Find the timestamp of each observation (Date & Time Combination)
 dataset$Timestamp<-as.POSIXct(paste(dataset$Date,dataset$Time),format="%Y-%m-%d %H:%M:%S")
+#Plot 2 PNG format
+png("Plot2.png",height=480,width=480)
 #Plot 2 core code
-plot2<-plot(dataset$Timestamp,dataset$Global_active_power,type="l",ylab="Global Active Power (kilowatts)",xlab="",cex.lab=0.8)
-#Plot 2 transfer to PNG format
-dev.copy(png,"Plot2.png")
+plot2<-plot(dataset$Timestamp,dataset$Global_active_power,type="l",ylab="Global Active Power (kilowatts)",xlab="")
+
 dev.off()
